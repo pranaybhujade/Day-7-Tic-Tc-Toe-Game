@@ -2,103 +2,95 @@ package com.bridgelabz;
 
 
 public class TicTacToeGame {
-    char gameBoard[] = null;
-    char playerLetter = '\0';
-    char computerLetter = '\0';
-    String winner = null;
-    static Scanner sc = new Scanner(System.in);
-
-
-    public static void main(String[] args) {
-        gameObj.showBoard();
-        gameObj.playerPlays();
-        gameObj.showBoard();
-        gameObj.checkWinOrTie();
-    }
-
-    void initialiseGame() {
-         else if (playerInput == 'O' || playerInput == 'o') {
-            playerLetter = 'O';
-            computerLetter = 'o';
-        } else
-		else{
-            System.out.println("\nInvalid Input.\nPlease try again!");
-            choosePlayerLetter();
-        }
-    }
-
-    void showBoard() {
-        else if (gameBoard[playerCell] != ' ') {
-            int toss () {
-                return (Math.random() > 0.5 ? 1 : 0);
-            }
-
-            void checkWinOrTie () {
-                char winLetter = ' ';
-                byte cellsStillEmpty = 0;
-                winner = null;
-
-                for (int pattern = 1; pattern < 9; pattern++) {
-                    switch (pattern) {
-                        case 1:
-                            if (gameBoard[1] == gameBoard[2] && gameBoard[1] == gameBoard[3])
-                                winLetter = gameBoard[1];
-                            break;
-                        case 2:
-                            if (gameBoard[4] == gameBoard[5] && gameBoard[4] == gameBoard[6])
-                                winLetter = gameBoard[4];
-                            break;
-                        case 3:
-                            if (gameBoard[7] == gameBoard[8] && gameBoard[7] == gameBoard[9])
-                                winLetter = gameBoard[7];
-                            break;
-                        case 4:
-                            if (gameBoard[1] == gameBoard[4] && gameBoard[1] == gameBoard[7])
-                                winLetter = gameBoard[1];
-                            break;
-                        case 5:
-                            if (gameBoard[2] == gameBoard[5] && gameBoard[2] == gameBoard[8])
-                                winLetter = gameBoard[2];
-                            break;
-                        case 6:
-                            if (gameBoard[3] == gameBoard[6] && gameBoard[3] == gameBoard[9])
-                                winLetter = gameBoard[3];
-                            break;
-                        case 7:
-                            if (gameBoard[1] == gameBoard[5] && gameBoard[1] == gameBoard[9])
-                                winLetter = gameBoard[1];
-                            break;
-                        case 8:
-                            if (gameBoard[3] == gameBoard[5] && gameBoard[3] == gameBoard[7])
-                                winLetter = gameBoard[3];
-                            break;
-                    }
-                }
-                winner = "me";
-                if (winLetter == playerLetter)
-                    winner = "PLAYER";
-                else if (winLetter == computerLetter)
-                    winner = "COMPUTER";
-                else {
-                    for (int counter = 1; counter <= 9; counter++) {
-                        if (gameBoard[counter] == ' ')
-                            cellsStillEmpty++;
-                    }
-                    if (cellsStillEmpty == 0)
-                        winner = "TIE";
-                }
-                if (winner != null)
-                    displayResults();
-            }
-
-            void displayResults () {
-                if (winner == "TIE")
-                    System.out.println("\n\nIt's a TIE!\nPlease try again.");
-                else
-                    System.out.println("\n\n" + winner + " wins!");
+    static void showBoard(){
+        System.out.println("showing board :");
+        for (int i = 1; i < 10; i++) {
+            System.out.print(board[i]+" .");
+            if (i == 3 || i==6) {
+                System.out.println();
+            }else {
 
             }
         }
+        System.out.println();
+        System.out.println(board[1]+" | "+board[2]+" | "+board[3]);
+        System.out.println(board[4]+" | "+board[5]+" | "+board[6]);
+        System.out.println(board[7]+" | "+board[8]+" | "+board[9]);
+    }
+
+    static void selectPosition(int number, char letter){
+        static void selectPosition(int number, char letter){
+            System.out.println(position+ " is already taken");
+            position=scanner.nextInt();
+        }else {
+            position= (int) ((Math.random()*10+1)%9);
+            position=(int) ((Math.random()*10+1)%9);
+        }
+
+    }
+     static int getPosition(){
+                || board[9]==' ' && board[3]== computerLetter && board[3] == board[6]
+                || board[9]==' ' && board[7]== computerLetter && board[7] == board[8]) {
+            return 9;
+        }else if ( board[1]==' ' && board[2] == board[3]
+                || board[1]==' ' && board[4] == board[7]
+                || board[1]==' ' && board[5] == board[9]) {
+        }else if ( board[1]==' ' && board[2] == board[3] && board[3]!=' '
+                || board[1]==' ' && board[4] == board[7] && board[7]!=' '
+                || board[1]==' ' && board[5] == board[9] && board[9]!=' ') {
+            return 1;
+        } else if (board[2]==' ' && board[1] == board[3]
+                || board[2]==' ' && board[5] == board[8]) {
+        } else if (board[2]==' ' && board[1] == board[3]  && board[3]!=' '
+                || board[2]==' ' && board[5] == board[8]  && board[8]!=' ') {
+            return 2;
+        } else if (board[3]==' ' && board[1] == board[2]
+                || board[3]==' ' && board[6] == board[9]
+                || board[3]==' ' && board[5] == board[7]) {
+        } else if (board[3]==' ' && board[1] == board[2]  && board[2]!=' '
+                || board[3]==' ' && board[6] == board[9] && board[9]!=' '
+                || board[3]==' ' && board[5] == board[7] && board[7]!=' ') {
+            return 3;
+        } else if (board[4]==' ' && board[1] == board[7]
+                || board[4]==' ' && board[5] == board[6]) {
+        } else if (board[4]==' ' && board[1] == board[7] && board[7]!=' '
+                || board[4]==' ' && board[5] == board[6] && board[6]!=' ') {
+            return 4;
+        } else if (board[5]==' ' && board[1] == board[9]
+                || board[5]==' ' && board[2] == board[8]
+                || board[5]==' ' && board[3] == board[7]
+                || board[5]==' ' && board[4] == board[6]) {
+        } else if (board[5]==' ' && board[1] == board[9] && board[9]!=' '
+                || board[5]==' ' && board[2] == board[8] && board[8]!=' '
+                || board[5]==' ' && board[3] == board[7] && board[7]!=' '
+                || board[5]==' ' && board[4] == board[6] && board[6]!=' ') {
+            return 5;
+        } else if (board[6]==' ' && board[3] == board[9]
+                || board[6]==' ' && board[4] == board[5]) {
+        } else if (board[6]==' ' && board[3] == board[9] && board[9]!=' '
+                || board[6]==' ' && board[4] == board[5] && board[5]!=' ') {
+            return 6;
+        } else if (board[7]==' ' && board[1] == board[4]
+                || board[7]==' ' && board[8] == board[9]
+                || board[7]==' ' && board[5] == board[3]) {
+        } else if (board[7]==' ' && board[1] == board[4] && board[4]!=' '
+                || board[7]==' ' && board[8] == board[9] && board[9]!=' '
+                || board[7]==' ' && board[5] == board[3] && board[3]!=' ') {
+            return 7;
+        } else if (board[8]==' ' && board[2] == board[5]
+                || board[8]==' ' && board[7] == board[9]) {
+        } else if (board[8]==' ' && board[2] == board[5] && board[5]!=' '
+                || board[8]==' ' && board[7] == board[9] && board[9]!=' ') {
+            return 8;
+        } else if (board[9]==' ' && board[1] == board[5]
+                || board[9]==' ' && board[3] == board[6]
+                || board[9]==' ' && board[7] == board[8]) {
+        } else if (board[9]==' ' && board[1] == board[5] && board[5]!=' '
+                || board[9]==' ' && board[3] == board[6] && board[6]!=' '
+                || board[9]==' ' && board[7] == board[8] && board[8]!= ' ') {
+            return 9;
+        }else
+            return  (int) ((Math.random()*10+1)%9);
     }
 }
 
